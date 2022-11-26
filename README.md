@@ -1,1 +1,1 @@
-# Decimal-Binary-Hex-Converter
+# Binary-Hex-Converter
