@@ -43,7 +43,7 @@ class MainWindow(QMainWindow):
         
         # button to show answer
         outputButton = QPushButton("Convert")
-        outputButton.clicked.connect(self.convert)
+        #outputButton.clicked.connect(self.convert)
         layout.addWidget(outputButton)
 
         # answer label
@@ -51,7 +51,13 @@ class MainWindow(QMainWindow):
         outputLabel.setAlignment(Qt.AlignHCenter)
         layout.addWidget(outputLabel)
 
-    
+    # handles combo box index changes
+    def input_combo_index_changed(self, i):
+        self.inputChoice = i
+        print(f"Input index: {self.inputChoice}")
+    def output_combo_index_changed(self, i):
+        self.outputChoice = i
+        print(f"Output index: {self.outputChoice}")
 
 
 app = QApplication(sys.argv)
