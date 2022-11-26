@@ -2,7 +2,7 @@ import sys
 
 from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QWidget, QLabel,
-    QVBoxLayout, QComboBox, QLineEdit
+    QVBoxLayout, QComboBox, QLineEdit, QPushButton
 )
 from PyQt5.QtCore import Qt, QSize
 
@@ -11,6 +11,11 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__()
 
         self.setWindowTitle("Decimal Binary Hex Converter")
+
+        # keeps track of input and output choices
+        self.inputChoice = 0
+        self.outputChoice = 0
+        self.outputVal = 0
         
         # layout
         layout = QVBoxLayout()
@@ -35,17 +40,18 @@ class MainWindow(QMainWindow):
         outputCombo.addItems(["Decimal", "Binary", "Hexadecmial"])
         outputCombo.setEditable(False)
         layout.addWidget(outputCombo)
+        
+        # button to show answer
+        outputButton = QPushButton("Convert")
+        outputButton.clicked.connect(self.convert)
+        layout.addWidget(outputButton)
 
         # answer label
         outputLabel = QLabel("???")
         outputLabel.setAlignment(Qt.AlignHCenter)
         layout.addWidget(outputLabel)
 
-
-
-    # for prompt combo box
-    def combo_index_changed(self, i):
-        print(i)
+    
 
 
 app = QApplication(sys.argv)
